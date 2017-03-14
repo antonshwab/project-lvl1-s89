@@ -1,0 +1,17 @@
+nodejs_version: "7.x"
+
+npm_config_prefix: "~/.npm-global"
+
+nodejs_npm_global_packages:
+  - name: eslint
+  # - name: pug-lint
+  # - name: livedown
+  # - name: js-yaml
+  # - name: stylelint
+  # - name: jsonlint
+  # - name: eslint-plugin-flowtype
+  # - name: eslint-plugin-import
+  # - name: eslint-import-resolver-webpack
+  # - name: eslint-plugin-jsx-a11y
+  # - name: eslint-config-airbnb
+  # - name: eslint-plugin-react
