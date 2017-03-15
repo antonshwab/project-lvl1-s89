@@ -1,6 +1,6 @@
 {
   "name": "super-brain-games",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The command line games",
   "main": "./src/bin/brain-games.js",
   "bin": {
@@ -26,6 +26,9 @@
     "url": "https://github.com/antonshwab/project-lvl1-s89/issues"
   },
   "homepage": "https://github.com/antonshwab/project-lvl1-s89#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.6"
+  },
   "devDependencies": {
     "babel-cli": "",
     "babel-core": "",
