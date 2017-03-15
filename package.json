@@ -1,15 +1,16 @@
 {
   "name": "super-brain-games",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The command line games",
-  "main": "./src/bin/brain-games.js",
+  "main": "dist/bin/brain-games.js",
   "bin": {
     "super-brain-games": "dist/bin/brain-games.js"
   },
   "scripts": {
     "babel-node": "babel-node",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "eslint": "eslint"
   },
   "repository": {
     "type": "git",
