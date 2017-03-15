@@ -1,0 +1,39 @@
+{
+  "name": "super-brain-games",
+  "version": "0.1.0",
+  "description": "The command line games",
+  "main": "./src/bin/brain-games.js",
+  "bin": {
+    "super-brain-games": "dist/bin/brain-games.js"
+  },
+  "scripts": {
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonshwab/project-lvl1-s89.git"
+  },
+  "keywords": [
+    "brain-games",
+    "games",
+    "CLI"
+  ],
+  "author": "Anton Shvab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonshwab/project-lvl1-s89/issues"
+  },
+  "homepage": "https://github.com/antonshwab/project-lvl1-s89#readme",
+  "devDependencies": {
+    "babel-cli": "",
+    "babel-core": "",
+    "babel-eslint": "",
+    "babel-preset-env": "",
+    "babel-preset-stage-0": "",
+    "eslint": "",
+    "eslint-config-airbnb-base": "",
+    "eslint-plugin-import": ""
+  }
+}

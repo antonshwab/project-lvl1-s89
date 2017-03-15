@@ -1,3 +1,5 @@
 tmp
 .vagrant
 cm/roles/*
+node_modules    
+dist
