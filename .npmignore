@@ -2,5 +2,4 @@ tmp
 .git
 cm
 .vagrant
-node_modules
 Vagrantfile
