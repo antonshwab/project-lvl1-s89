@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import sayHello from '..';
+import { makeGreeting, sayWelcome } from '..';
 
-console.log('Welcome to the Brain Games!\n');
+sayWelcome();
 
-sayHello();
+makeGreeting();
