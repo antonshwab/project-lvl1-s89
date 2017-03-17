@@ -1,107 +1,52 @@
 import readlineSync from 'readline-sync';
 
-const sayWelcome = () => {
-  console.log('Welcome to the Brain Games!\n');
-};
+const playGame = (game) => {
+  const { rules, data } = game;
 
-const getUsername = () => {
-  const name = readlineSync.question('May I have your name, human being? ');
-  return name;
-};
-
-const makeGreeting = () => {
-  const name = getUsername();
-  console.log(`Hello, dear ${name}!\n`);
-  return name;
-};
-
-const playBrainEven = () => {
-  const gameState = {
-    outcome: true,
-    username: '',
-    rules: 'Answer "yes" if number even otherwise answer "no".\n',
-  };
-
-  const setUsername = (name) => {
-    gameState.username = name;
-  };
-
-  const sayRules = () => {
-    const rules = gameState.rules;
+  const doGreeting = () => {
+    console.log('Welcome to the Brain Games!\n');
     console.log(rules);
+    const playerName = readlineSync.question('May I have your name, human being? ');
+    console.log(`Hello, dear ${playerName}!\n`);
+    return playerName;
   };
 
-  const generateRandomIntegers = (count, min, max) => {
-    const getRandomInt = () => Math.floor(Math.random() * (max - min)) + min;
-    const randomIntegers = Array.from({ length: count }, getRandomInt);
-    return randomIntegers;
-  };
+  const play = (gameData, playerName) => {
+    const respondToCorrectAnswer = (playerAnswer) => {
+      console.log(`Your answer: ${playerAnswer}`);
+      console.log('Correct!\n');
+    };
 
-  const respondToCorrectAns = (userAnswer) => {
-    console.log(`Your answer: ${userAnswer}`);
-    console.log('Correct!\n');
-  };
+    const respondToWrongAnswer = (playerAnswer, correctAnswer) => {
+      console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
+      console.log(`Let's try again, ${playerName})\n`);
+    };
 
-  const respondToWrongAns = (userAnswer, correctAnswer) => {
-    const name = gameState.username;
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-    console.log(`Let's try again, ${name})\n`);
-  };
+    const go = () => {
+      let outcome = true;
+      gameData.forEach(([riddle, correctAnswer]) => {
+        const playerAnswer = readlineSync.question(`Question: ${riddle}\n`);
+        if (playerAnswer === correctAnswer) {
+          respondToCorrectAnswer(playerAnswer);
+        } else {
+          respondToWrongAnswer(playerAnswer, correctAnswer, playerName);
+          outcome = false;
+        }
+      });
+      return outcome;
+    };
 
-  const setFailedOutcome = () => {
-    gameState.outcome = false;
-  };
+    const isPlayerWin = go();
 
-  const finishGame = () => {
-    const name = gameState.username;
-    const isWin = gameState.outcome;
-    if (isWin) {
-      console.log(`Congratulations, ${name}!\n`);
+    if (isPlayerWin) {
+      console.log(`Congratulations, ${playerName}!\n`);
     } else {
-      console.log(`Ha-ha! ${name}, you lose!\n`);
+      console.log(`Ha-ha! ${playerName}, you lose!\n`);
     }
   };
 
-  const prepareGameData = () => {
-    const integers = generateRandomIntegers(3, 0, 100);
-
-    const integersWithAnswers = integers.map((int) => {
-      const isEven = i => i % 2 === 0;
-      if (isEven(int)) {
-        return [int, 'yes'];
-      }
-      return [int, 'no'];
-    });
-
-    return integersWithAnswers;
-  };
-
-  const play = () => {
-    const gameData = prepareGameData();
-
-    gameData.forEach(([int, correctAnswer]) => {
-      const userAnswer = readlineSync.question(`Question: ${int}\n`);
-      if (userAnswer === correctAnswer) {
-        respondToCorrectAns(userAnswer);
-      } else {
-        respondToWrongAns(userAnswer, correctAnswer);
-        setFailedOutcome();
-      }
-    });
-
-    finishGame();
-  };
-
-  sayWelcome();
-
-  sayRules();
-
-  const name = makeGreeting();
-
-  setUsername(name);
-
-  play();
+  const playerName = doGreeting();
+  play(data, playerName);
 };
 
-export { sayWelcome, makeGreeting, playBrainEven };
-
+export default playGame;
