@@ -1,6 +1,8 @@
+export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
 export const generateRandomIntegers = (count, min, max) => {
-  const getRandomInt = () => Math.floor(Math.random() * (max - min)) + min;
-  const randomIntegers = Array.from({ length: count }, getRandomInt);
+  const putRandomInt = () => getRandomInt(min, max);
+  const randomIntegers = Array.from({ length: count }, putRandomInt);
   return randomIntegers;
 };
 
