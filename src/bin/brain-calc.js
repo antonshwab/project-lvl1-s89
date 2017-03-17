@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 import playGame from '..';
-import makeBrainCalcGame from '../games/brain-calc-game';
+import brainCalcGame from '../games/brain-calc-game';
 
-const game = makeBrainCalcGame();
-
-playGame(game);
+playGame(brainCalcGame);
