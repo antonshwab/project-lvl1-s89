@@ -1,4 +1,4 @@
-import generateRandomIntegers from '../libs/math';
+import { generateRandomIntegers } from '../libs/math';
 
 const makeRandomOperators = (riddlesCount) => {
   const operators = ['*', '-', '+'];

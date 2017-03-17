@@ -1,4 +1,4 @@
-import generateRandomIntegers from '../libs/math';
+import { generateRandomIntegers } from '../libs/math';
 
 const prepareGameData = (riddlesCount, minNum, maxNum) => {
   const integers = generateRandomIntegers(riddlesCount, minNum, maxNum);
