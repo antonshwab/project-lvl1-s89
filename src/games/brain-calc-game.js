@@ -1,9 +1,6 @@
-import { generateRandomIntegers, getRandomInt } from '../libs/math';
+import { getRandomInt } from '../libs/math';
 
-const makeRandomArguments = (argsCount, minArg, maxArg) =>
-  generateRandomIntegers(argsCount, minArg, maxArg);
-
-const putRandomOperator = () => {
+const putRandomOp = () => {
   const possibleOperators = ['*', '-', '+'];
   const minOperatorIndex = 0;
   const maxOperatorIndex = possibleOperators.length - 1;
@@ -11,42 +8,36 @@ const putRandomOperator = () => {
   return possibleOperators[randomOperatorIndex];
 };
 
-const makeRandomOperators = operatorsCount =>
-  Array.from({ length: operatorsCount }, putRandomOperator);
-
-const makeExpressions = (expressionsCount) => {
-  const operatorsCount = expressionsCount;
-  const argsCount = expressionsCount;
+const putRandomArg = () => {
   const minArg = 0;
   const maxArg = 100;
-  const leftArgs = makeRandomArguments(argsCount, minArg, maxArg);
-  const rightArgs = makeRandomArguments(argsCount, minArg, maxArg);
-  const operators = makeRandomOperators(operatorsCount);
-  const expressions = operators.reduce((acc, op, index) => {
-    const leftArg = leftArgs[index];
-    const rightArg = rightArgs[index];
-    return [...acc, [op, leftArg, rightArg]];
-  }, []);
-  return expressions;
+  const randomArgument = getRandomInt(minArg, maxArg);
+  return randomArgument;
 };
 
+const putRandomExp = () => [putRandomOp(), putRandomArg(), putRandomArg()];
+
+const makeExpressions = expressionsCount =>
+  Array.from({ length: expressionsCount }, putRandomExp);
+
 const getRiddle = (expression) => {
-  const [op, leftArg, rightArg] = expression;
-  return `${leftArg} ${op} ${rightArg}`;
+  const [op, arg1, arg2] = expression;
+  return `${arg1} ${op} ${arg2}`;
 };
 
 const getAnswer = (expression) => {
-  const [op, leftArg, rightArg] = expression;
+  const [op, arg1, arg2] = expression;
+  console.log(op, arg1, arg2);
   let result;
   switch (op) {
     case '*':
-      result = leftArg * rightArg;
+      result = arg1 * arg2;
       break;
     case '-':
-      result = leftArg - rightArg;
+      result = arg1 - arg2;
       break;
     case '+':
-      result = leftArg + rightArg;
+      result = arg1 + arg2;
       break;
     default:
       console.log('Wrong operator.');
