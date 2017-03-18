@@ -7,11 +7,14 @@ const getAnswer = (int) => {
   return 'no';
 };
 
-const prepareRiddlesWithAnswers = () => {
+const putRandomInt = () => {
   const minInt = 0;
   const maxInt = 100;
-  const riddles =
-    [getRandomInt(minInt, maxInt), getRandomInt(minInt, maxInt), getRandomInt(minInt, maxInt)];
+  return getRandomInt(minInt, maxInt);
+};
+
+const prepareRiddlesWithAnswers = () => {
+  const riddles = Array.from({ length: 3 }, putRandomInt);
   const riddlesWithAnswers = riddles.map(riddle => [riddle, getAnswer(riddle)]);
   return riddlesWithAnswers;
 };
