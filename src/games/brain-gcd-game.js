@@ -8,9 +8,6 @@ const putRandomIntegerPair = () => {
   return [intA, intB];
 };
 
-const makeIntegerPairs = pairsCount =>
-  Array.from({ length: pairsCount }, putRandomIntegerPair);
-
 const getAnswer = (integersPair) => {
   const [intA, intB] = integersPair;
   return `${gcd(intA, intB)}`;
@@ -21,9 +18,8 @@ const getRiddle = (integersPair) => {
   return `${intA} ${intB}`;
 };
 
-const prepareRiddlesWithAnswers = (riddlesCount) => {
-  const pairsCount = riddlesCount;
-  const integerPairs = makeIntegerPairs(pairsCount);
+const prepareRiddlesWithAnswers = () => {
+  const integerPairs = Array.from({ length: 3 }, putRandomIntegerPair);
   const riddlesWithAnswers = integerPairs
     .reduce((acc, intPair) => [...acc, [getRiddle(intPair), getAnswer(intPair)]], []);
   return riddlesWithAnswers;
@@ -31,8 +27,7 @@ const prepareRiddlesWithAnswers = (riddlesCount) => {
 
 const rules = 'Find the greatest common divisor of given numbers.';
 
-const riddlesCount = 3;
-const riddlesWithAnswers = prepareRiddlesWithAnswers(riddlesCount);
+const riddlesWithAnswers = prepareRiddlesWithAnswers();
 
 const brainGcdGame = {
   rules,
