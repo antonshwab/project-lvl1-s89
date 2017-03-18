@@ -13,3 +13,4 @@ export const gcd = (numA, numB) => {
   return gcd(numB, numA % numB);
 };
 
+export const isEven = i => i % 2 === 0;
