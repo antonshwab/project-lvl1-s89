@@ -1,20 +1,5 @@
 export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-export const generateRandomIntegers = (count, min, max) => {
-  const putRandomInt = () => getRandomInt(min, max);
-  const randomIntegers = Array.from({ length: count }, putRandomInt);
-  return randomIntegers;
-};
-
-export const gcd = (numA, numB) => {
-  if (numB === 0) {
-    return numA;
-  }
-  return gcd(numB, numA % numB);
-};
-
-export const isEven = i => i % 2 === 0;
-
 export const digitsToString = digits => digits.join('');
 
 export const intToDigits = (int) => {
@@ -31,3 +16,25 @@ export const intToDigits = (int) => {
 
 export const ascNumSort = nums => nums.sort((a, b) => a - b);
 
+export const gcd = (numA, numB) => {
+  if (numB === 0) {
+    return numA;
+  }
+  return gcd(numB, numA % numB);
+};
+
+export const isEven = i => i % 2 === 0;
+
+export const isPrime = (int) => {
+  if (int === 0 || int === 1) {
+    return false;
+  }
+
+  const intRoot = Math.sqrt(int);
+  for (let i = 2; i <= intRoot; i++) {
+    if (int % i === 0) {
+      return false;
+    }
+  }
+  return true;
+};
