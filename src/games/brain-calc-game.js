@@ -1,14 +1,27 @@
-import { generateRandomIntegers } from '../libs/math';
+import { generateRandomIntegers, getRandomInt } from '../libs/math';
 
-const makeRandomOperators = (operatorsCount) => {
+const makeRandomArguments = (argsCount, minArg, maxArg) =>
+  generateRandomIntegers(argsCount, minArg, maxArg);
+
+const putRandomOperator = () => {
   const possibleOperators = ['*', '-', '+'];
-  const getRandomOperator = (operators, randomIndex) => operators[randomIndex];
-  const randomIndexes = generateRandomIntegers(operatorsCount, 0, operatorsCount - 1);
-  const randomOperators = randomIndexes.map(index => getRandomOperator(possibleOperators, index));
-  return randomOperators;
+  const minOperatorIndex = 0;
+  const maxOperatorIndex = possibleOperators.length - 1;
+  const randomOperatorIndex = getRandomInt(minOperatorIndex, maxOperatorIndex);
+  return possibleOperators[randomOperatorIndex];
 };
 
-const makeExpressions = (operators, leftArgs, rightArgs) => {
+const makeRandomOperators = operatorsCount =>
+  Array.from({ length: operatorsCount }, putRandomOperator);
+
+const makeExpressions = (expressionsCount) => {
+  const operatorsCount = expressionsCount;
+  const argsCount = expressionsCount;
+  const minArg = 0;
+  const maxArg = 100;
+  const leftArgs = makeRandomArguments(argsCount, minArg, maxArg);
+  const rightArgs = makeRandomArguments(argsCount, minArg, maxArg);
+  const operators = makeRandomOperators(operatorsCount);
   const expressions = operators.reduce((acc, op, index) => {
     const leftArg = leftArgs[index];
     const rightArg = rightArgs[index];
@@ -42,19 +55,17 @@ const getAnswer = (expression) => {
 };
 
 const prepareRiddlesWithAnswers = (riddlesCount) => {
-  const minArg = 0;
-  const maxArg = 100;
-  const leftArgs = generateRandomIntegers(riddlesCount, minArg, maxArg);
-  const rightArgs = generateRandomIntegers(riddlesCount, minArg, maxArg);
-  const operators = makeRandomOperators(riddlesCount);
-  const expressions = makeExpressions(operators, leftArgs, rightArgs);
+  const expressionsCount = riddlesCount;
+  const expressions = makeExpressions(expressionsCount);
   const riddlesWithAnswers = expressions
-    .reduce((acc, exp) => [...acc, [getRiddle(exp), getAnswer(exp)]], []);
+        .reduce((acc, exp) => [...acc, [getRiddle(exp), getAnswer(exp)]], []);
   return riddlesWithAnswers;
 };
 
 const rules = 'What is the result of the expression?';
-const riddlesWithAnswers = prepareRiddlesWithAnswers(3);
+
+const riddlesCount = 3;
+const riddlesWithAnswers = prepareRiddlesWithAnswers(riddlesCount);
 
 const brainCalcGame = {
   rules,

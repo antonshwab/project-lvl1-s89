@@ -1,27 +1,31 @@
-import { generateRandomIntegers } from '../libs/math';
+import { generateRandomIntegers, isEven } from '../libs/math';
 
-const prepareGameData = (riddlesCount, minNum, maxNum) => {
-  const integers = generateRandomIntegers(riddlesCount, minNum, maxNum);
+const makeIntegerRiddles = (riddlesCount) => {
+  const integersCount = riddlesCount;
+  const minInt = 0;
+  const maxInt = 100;
+  return generateRandomIntegers(integersCount, minInt, maxInt);
+};
 
-  const integersWithAnswers = integers.map((int) => {
-    const isEven = i => i % 2 === 0;
+const prepareRiddlesWithAnswers = (riddlesCount) => {
+  const riddles = makeIntegerRiddles(riddlesCount);
+  const riddlesWithAnswers = riddles.map((int) => {
     if (isEven(int)) {
       return [int, 'yes'];
     }
     return [int, 'no'];
   });
-
-  return integersWithAnswers;
+  return riddlesWithAnswers;
 };
 
-const makeBrainEvenGame = () => {
-  const rules = 'Answer "yes" if number even otherwise answer "no".\n';
-  const data = prepareGameData(3, 1, 100);
-  const game = {
-    rules,
-    data,
-  };
-  return game;
+const rules = 'Answer "yes" if number even otherwise answer "no".\n';
+
+const riddlesCount = 3;
+const riddlesWithAnswers = prepareRiddlesWithAnswers(riddlesCount);
+
+const brainEvenGame = {
+  rules,
+  riddlesWithAnswers,
 };
 
-export default makeBrainEvenGame;
+export default brainEvenGame;

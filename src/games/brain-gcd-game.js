@@ -1,22 +1,42 @@
-import { generateRandomIntegers, gcd } from '../libs/math';
+import { gcd, getRandomInt } from '../libs/math';
 
-const prepareGameData = (riddlesCount, minNum, maxNum) => {
-  const alphaIntegers = generateRandomIntegers(riddlesCount, minNum, maxNum);
-  const betaIntegers = generateRandomIntegers(riddlesCount, minNum, maxNum);
-  const intPairs = alphaIntegers.reduce((acc, int, i) => [...acc, [int, betaIntegers[i]]], []);
-  const data = intPairs.reduce((acc, [numA, numB]) => [...acc, [`${numA} ${numB}`, `${gcd(numA, numB)}`]], []);
-  return data;
+const putRandomIntegerPair = () => {
+  const min = 1;
+  const max = 100;
+  const intA = getRandomInt(min, max);
+  const intB = getRandomInt(min, max);
+  return [intA, intB];
 };
 
+const makeIntegerPairs = pairsCount =>
+  Array.from({ length: pairsCount }, putRandomIntegerPair);
 
-const makeBrainGcdGame = () => {
-  const rules = 'Find the greatest common divisor of given numbers.';
-  const data = prepareGameData(3, 0, 100);
-  const game = {
-    rules,
-    data,
-  };
-  return game;
+const getAnswer = (integersPair) => {
+  const [intA, intB] = integersPair;
+  return `${gcd(intA, intB)}`;
 };
 
-export default makeBrainGcdGame;
+const getRiddle = (integersPair) => {
+  const [intA, intB] = integersPair;
+  return `${intA} ${intB}`;
+};
+
+const prepareRiddlesWithAnswers = (riddlesCount) => {
+  const pairsCount = riddlesCount;
+  const integerPairs = makeIntegerPairs(pairsCount);
+  const riddlesWithAnswers = integerPairs
+    .reduce((acc, intPair) => [...acc, [getRiddle(intPair), getAnswer(intPair)]], []);
+  return riddlesWithAnswers;
+};
+
+const rules = 'Find the greatest common divisor of given numbers.';
+
+const riddlesCount = 3;
+const riddlesWithAnswers = prepareRiddlesWithAnswers(riddlesCount);
+
+const brainGcdGame = {
+  rules,
+  riddlesWithAnswers,
+};
+
+export default brainGcdGame;
