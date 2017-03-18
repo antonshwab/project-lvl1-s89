@@ -1,6 +1,6 @@
 {
   "name": "super-brain-games",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "The command line games",
   "main": "dist/index.js",
   "bin": {
