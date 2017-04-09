@@ -1,11 +1,11 @@
 import readlineSync from 'readline-sync';
 
 const playGame = (game) => {
-  const { rules, riddlesWithAnswers } = game;
+  const { rule, riddlesWithAnswers } = game;
 
   const doGreeting = () => {
     console.log('Welcome to the Brain Games!\n');
-    console.log(rules);
+    console.log(`${rule}\n`);
     const playerName = readlineSync.question('May I have your name, human being? ');
     console.log(`Hello, dear ${playerName}!\n`);
     return playerName;

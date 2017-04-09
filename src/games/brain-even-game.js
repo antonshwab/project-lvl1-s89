@@ -9,7 +9,7 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rule = 'Answer "yes" if number even otherwise answer "no".\n';
+const rule = 'Answer "yes" if number even otherwise answer "no".';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 

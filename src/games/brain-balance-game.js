@@ -29,7 +29,7 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rule = 'Balance the given number.\n';
+const rule = 'Balance the given number.';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 

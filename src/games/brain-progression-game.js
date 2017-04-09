@@ -23,7 +23,7 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rule = 'What number is missing in this progression?\n';
+const rule = 'What number is missing in this progression?';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 

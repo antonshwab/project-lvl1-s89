@@ -25,7 +25,7 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rule = 'What is the result of the expression?\n';
+const rule = 'What is the result of the expression?';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 

@@ -10,7 +10,7 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rule = 'Find the greatest common divisor of given numbers.\n';
+const rule = 'Find the greatest common divisor of given numbers.';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 
