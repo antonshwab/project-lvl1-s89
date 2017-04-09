@@ -10,12 +10,12 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rules = 'Find the greatest common divisor of given numbers.\n';
+const rule = 'Find the greatest common divisor of given numbers.\n';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 
 const brainGcdGame = {
-  rules,
+  rule,
   riddlesWithAnswers,
 };
 

@@ -25,12 +25,12 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rules = 'What is the result of the expression?\n';
+const rule = 'What is the result of the expression?\n';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 
 const brainCalcGame = {
-  rules,
+  rule,
   riddlesWithAnswers,
 };
 

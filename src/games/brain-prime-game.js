@@ -7,12 +7,12 @@ const putRiddleWithAnswer = () => {
   const answer = isPrime(int) ? 'yes' : 'no';
   return [riddle, answer];
 };
-const rules = 'Is prime?\n';
+const rule = 'Is prime?\n';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 
 const brainPrimeGame = {
-  rules,
+  rule,
   riddlesWithAnswers,
 };
 

@@ -9,12 +9,12 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rules = 'Answer "yes" if number even otherwise answer "no".\n';
+const rule = 'Answer "yes" if number even otherwise answer "no".\n';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 
 const brainEvenGame = {
-  rules,
+  rule,
   riddlesWithAnswers,
 };
 

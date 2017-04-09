@@ -23,12 +23,12 @@ const putRiddleWithAnswer = () => {
   return [riddle, answer];
 };
 
-const rules = 'What number is missing in this progression?\n';
+const rule = 'What number is missing in this progression?\n';
 
 const riddlesWithAnswers = Array.from({ length: 3 }, putRiddleWithAnswer);
 
 const brainProgressionGame = {
-  rules,
+  rule,
   riddlesWithAnswers,
 };
 
